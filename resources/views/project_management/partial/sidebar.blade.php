@@ -43,7 +43,8 @@
              </a>
              <div class="collapse" id="ui-basic3">
                  <ul class="nav flex-column sub-menu">
-                     <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html"> Assign Project</a></li>
+                     <li class="nav-item"> <a class="nav-link" href="{{ route('assignProject') }}"> Assign Project</a></li>
+                     <li class="nav-item"> <a class="nav-link" href="{{ route('assignProjectList') }}"> Listed Assign Project</a></li>
 
                  </ul>
              </div>

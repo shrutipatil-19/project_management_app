@@ -11,7 +11,7 @@
 
                         <h4 class="card-title">Assign Project</h4>
                         <!-- <p class="card-description"> Basic form elements </p> -->
-                        <form class="forms-sample" action="{{ route('assignProject') }}" method="POST" enctype="multipart/form-data">
+                        <form class="forms-sample" action="{{ route('assignProjectCreate') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="assign_project">Project Name</label>

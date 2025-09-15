@@ -14,8 +14,8 @@ class Project extends Model
         'timeline',
         'img'
     ];
-    // public function employees()
-    // {
-    //     return $this->belongsToMany(Employee::class, 'employee_project', 'assign_employee', 'assign_project');
-    // }
+    public function employees()
+    {
+        return $this->belongsToMany(Employee::class, 'assign_projects', 'assign_employee', 'assign_project');
+    }
 }

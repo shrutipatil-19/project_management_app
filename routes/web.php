@@ -40,10 +40,12 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::delete('/admin/delete-employee/{id}', [EmployeeController::class, 'delete'])->name('deleteEmployee');
 
     Route::get('/admin/assign-project/', [AssignProjectController::class, 'assignProject'])->name('assignProject');
+    Route::post('/admin/assign-project/', [AssignProjectController::class, 'assignProjectCreate'])->name('assignProjectCreate');
+    Route::get('/admin/assign-project-list/', [AssignProjectController::class, 'listAssignProject'])->name('assignProjectList');
 });
 
 Route::middleware(['auth:employee'])->group(function () {
- 
+
     Route::get('/employee/add-project', [ProjectController::class, 'index'])->name('addProject');
     Route::post('/employee/add-project', [ProjectController::class, 'create'])->name('createProject');
     Route::get('/employee/list-project', [ProjectController::class, 'list'])->name('listProject');
@@ -51,4 +53,3 @@ Route::middleware(['auth:employee'])->group(function () {
     Route::put('/employee/edit-project/{id}', [ProjectController::class, 'update'])->name('updateProject');
     Route::delete('/employee/delete-project/{project}', [ProjectController::class, 'delete'])->name('deleteProject');
 });
-

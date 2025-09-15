@@ -21,8 +21,8 @@ class Employee extends Authenticatable
         $this->attributes['password'] = Hash::make($value);
     }
 
-    // public function projects()
-    // {
-    //     return $this->belongsToMany(Project::class, 'assign_projects', 'assign_project', 'assign_employee');
-    // }
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class, 'assign_projects', 'assign_project', 'assign_employee');
+    }
 }
