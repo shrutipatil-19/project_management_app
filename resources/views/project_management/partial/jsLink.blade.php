@@ -12,3 +12,5 @@
  <!-- endinject -->
  <!-- Custom js for this page -->
  <script src="{{ asset('assets/js/dashboard.js') }}"></script>
+ <!-- Mobiscroll JS -->
+ <script src="https://cdn.mobiscroll.com/5.0.4/js/mobiscroll.jquery.min.js"></script>

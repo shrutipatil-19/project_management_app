@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     @include('project_management.partial.styleLink')
+    @stack('styles')
 </head>
 
 <body>
@@ -18,6 +19,7 @@
         @include('project_management.partial.footer')
     </div>
     @include('project_management.partial.jsLink')
+    @stack('scripts')
 </body>
 
 </html>

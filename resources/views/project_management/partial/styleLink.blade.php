@@ -13,3 +13,6 @@
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
   <!-- End layout styles -->
   <link rel="shortcut icon" href="{{  asset('assets/images/favicon.png') }}" />
+  <!-- Mobiscroll CSS -->
+  <link rel="stylesheet" href="https://cdn.mobiscroll.com/5.0.4/css/mobiscroll.min.css" />
+
