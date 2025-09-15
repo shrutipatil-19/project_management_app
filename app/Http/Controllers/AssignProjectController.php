@@ -21,8 +21,8 @@ class AssignProjectController extends Controller
     }
     public function assignProjectCreate(Request $request){
          $validated = $request->validate([
-            'assign_project' => 'required',
-            'assign_employee' => 'required'
+            'assign_project' => 'required|array',
+            'assign_employee' => 'required|array'
          ]);
          
          $assign_project = AssignProject::create($validated);

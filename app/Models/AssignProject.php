@@ -10,4 +10,9 @@ class AssignProject extends Model
         'assign_project',
         'assign_employee'
     ];
+
+    protected $casts = [
+        'assign_project' => 'array',
+        'assign_employee' => 'array'
+    ];
 }

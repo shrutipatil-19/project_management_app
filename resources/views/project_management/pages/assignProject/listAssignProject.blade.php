@@ -16,21 +16,18 @@
                                 <tr>
                                     <th> Employee name </th>
                                     <th> Project Name </th>
-                                  
-                                  
+
+
                                     <th> Action </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($assign_projects as $assign_project)
                                 <tr>
-                                    
-                                    <td> {{ $assign_project->assign_employee }} </td>
-                                    <td>
-                                        {{ $assign_project->assign_project }}
-                                    </td>
-                                   
-                                   
+
+                                    <td>{{ implode(', ', $assign_project->assign_employee ?? []) }}</td>
+                                    <td>{{ implode(', ', $assign_project->assign_project ?? []) }}</td>
+
                                     <td>
                                         <a href=""> <button type="button" class="btn btn-secondary">Edit</button></a>
 
@@ -39,7 +36,7 @@
                                             @method('DELETE')
                                             <button type="button" class="btn btn-danger" onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this blog?')) this.closest('form').submit();">Delete</button>
                                         </form>
-                                        
+
 
                                     </td>
 

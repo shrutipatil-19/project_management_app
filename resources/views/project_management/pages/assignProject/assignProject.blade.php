@@ -24,7 +24,7 @@
                                 </label><br>
                                 <select data-placeholder="Select Project..." multiple class="chosen-select" id="assign_project" name="assign_project[]">
                                     @foreach ($projects as $project)
-                                    <option value="{{ $project->id }}">{{ $project->name }}</option>
+                                    <option value="{{ $project->name }}">{{ $project->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -35,7 +35,7 @@
                                 </label> <br>
                                 <select data-placeholder="Select Employees..." multiple class="chosen-select" id="assign_employee" name="assign_employee[]">
                                     @foreach ($employees as $employee)
-                                    <option value="{{ $employee->id }}">{{ $employee->name }}</option>
+                                    <option value="{{ $employee->name }}">{{ $employee->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
