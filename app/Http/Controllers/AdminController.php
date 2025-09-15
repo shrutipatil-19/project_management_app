@@ -22,7 +22,7 @@ class AdminController extends Controller
         ]);
 
         $admin = Admin::create($validated);
-        return redirect()->route('login')->with('success', 'Employee add successfully');
+        return redirect()->route('loginAdmin')->with('success', 'Admin add successfully');
     }
     public function login()
     {
@@ -42,24 +42,22 @@ class AdminController extends Controller
             'password' => 'required|string|min:6',
         ]);
 
-        if (Auth::guard('admin')->attempt([
-            'email' => $request->email,
-            'password' => $request->password
-        ]))
-
+        if (Auth::guard('admin')->attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
-        return redirect()->route('dashboard')->with('success', 'Login successful');
+
+            return redirect()->route('dashboard')->with('success', 'Login successful');
+        }
+
+        return redirect()->route('loginAdmin')->withErrors(['email' => 'Invalid credentials.']);
     }
 
     public function logoutUser(Request $request)
     {
-
         Auth::guard('admin')->logout();
 
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
-        return redirect()->route('login')->with('success', 'Logged out successfully');
+        return redirect()->route('loginAdmin')->with('success', 'Logged out successfully');
     }
 }

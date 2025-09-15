@@ -13,13 +13,13 @@ Route::get('/welcome', function () {
 
 Route::get('/admin/register', [AdminController::class, 'index'])->name('register');
 Route::post('/admin/register', [AdminController::class, 'create'])->name('addAdmin');
-Route::get('/admin/login', [AdminController::class, 'login'])->name('login');
+Route::get('/admin/login', [AdminController::class, 'login'])->name('loginAdmin');
 Route::post('/admin/login', [AdminController::class, 'loginUser'])->name('loginUser');
 Route::post('/admin/logout', [AdminController::class, 'logoutUser'])->name('logoutUser');
 
-Route::get('/employee/login', [EmployeeController::class, 'login'])->name('login');
-Route::post('/employee/login', [EmployeeController::class, 'loginUser'])->name('loginEmployee');
-Route::post('/employee/logout', [EmployeeController::class, 'logoutUser'])->name('logoutEmployee');
+Route::get('/employee/login', [EmployeeController::class, 'loginEmp'])->name('login');
+Route::post('/employee/login', [EmployeeController::class, 'loginUserEmp'])->name('loginEmployee');
+Route::post('/employee/logout', [EmployeeController::class, 'logoutUserEmp'])->name('logoutEmployee');
 
 
 Route::middleware(['auth:admin'])->group(function () {
@@ -42,11 +42,13 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/assign-project/', [AssignProjectController::class, 'assignProject'])->name('assignProject');
 });
 
-Route::middleware(['auth::employee'])->group(function () {
-    Route::get('/admin/add-project', [ProjectController::class, 'index'])->name('addProject');
-    Route::post('/admin/add-project', [ProjectController::class, 'create'])->name('createProject');
-    Route::get('/admin/list-project', [ProjectController::class, 'list'])->name('listProject');
-    Route::get('/admin/edit-project/{id}', [ProjectController::class, 'edit'])->name('editProject');
-    Route::put('/admin/edit-project/{id}', [ProjectController::class, 'update'])->name('updateProject');
-    Route::delete('/admin/delete-project/{project}', [ProjectController::class, 'delete'])->name('deleteProject');
+Route::middleware(['auth:employee'])->group(function () {
+ 
+    Route::get('/employee/add-project', [ProjectController::class, 'index'])->name('addProject');
+    Route::post('/employee/add-project', [ProjectController::class, 'create'])->name('createProject');
+    Route::get('/employee/list-project', [ProjectController::class, 'list'])->name('listProject');
+    Route::get('/employee/edit-project/{id}', [ProjectController::class, 'edit'])->name('editProject');
+    Route::put('/employee/edit-project/{id}', [ProjectController::class, 'update'])->name('updateProject');
+    Route::delete('/employee/delete-project/{project}', [ProjectController::class, 'delete'])->name('deleteProject');
 });
+

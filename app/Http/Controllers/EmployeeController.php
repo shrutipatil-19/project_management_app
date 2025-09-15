@@ -54,27 +54,26 @@ class EmployeeController extends Controller
         $employee->delete();
         return redirect()->route('listEmployee')->with('success', 'Employee Edited successfully');
     }
-    public function login()
+    public function loginEmp()
     {
         return view('project_management.pages.employee.login');
     }
-
-    public function loginUser(Request $request)
+    public function loginUserEmp(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|string'
+            'email'    => 'required|email',
+            'password' => 'required|string|min:6',
         ]);
+
         if (Auth::guard('employee')->attempt([
             'email' => $request->email,
-            'password' =>  $request->password
+            'password' => $request->password
         ]))
 
             $request->session()->regenerate();
-
-        return redirect()->route('listProject')->with('success', 'Employee Edited successfully');
+        return redirect()->route('addProject')->with('success', 'Login successful');
     }
-    public function logoutUser(Request $request)
+    public function logoutUserEmp(Request $request)
     {
 
         Auth::guard('employee')->logout();
