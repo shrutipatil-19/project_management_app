@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AssignProjectController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeeController;
@@ -9,6 +10,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/welcome', function () {
     return view('welcome');
 });
+
+Route::get('/admin/register', [AdminController::class, 'index'])->name('register');
+Route::post('/admin/register', [AdminController::class, 'create'])->name('addAdmin');
+Route::get('/admin/login', [AdminController::class, 'login'])->name('login');
+Route::post('/admin/login', [AdminController::class, 'loginUser'])->name('loginUser');
+Route::post('/admin/login', [AdminController::class, 'logoutUser'])->name('logoutUser');
+
+
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/admin/add-project', [ProjectController::class, 'index'])->name('addProject');

@@ -110,7 +110,7 @@
                              <span>Lock Account</span>
                              <i class="mdi mdi-lock ml-1"></i>
                          </a>
-                         <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="#">
+                         <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="{{ route('logoutUser') }}">
                              <span>Log Out</span>
                              <i class="mdi mdi-logout ml-1"></i>
                          </a>
