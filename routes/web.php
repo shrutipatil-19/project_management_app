@@ -17,6 +17,10 @@ Route::get('/admin/login', [AdminController::class, 'login'])->name('login');
 Route::post('/admin/login', [AdminController::class, 'loginUser'])->name('loginUser');
 Route::post('/admin/logout', [AdminController::class, 'logoutUser'])->name('logoutUser');
 
+Route::get('/employee/login', [EmployeeController::class, 'login'])->name('login');
+Route::post('/employee/login', [EmployeeController::class, 'loginUser'])->name('loginEmployee');
+Route::post('/employee/logout', [EmployeeController::class, 'logoutUser'])->name('logoutEmployee');
+
 
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -36,4 +40,13 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::delete('/admin/delete-employee/{id}', [EmployeeController::class, 'delete'])->name('deleteEmployee');
 
     Route::get('/admin/assign-project/', [AssignProjectController::class, 'assignProject'])->name('assignProject');
+});
+
+Route::middleware(['auth::employee'])->group(function () {
+    Route::get('/admin/add-project', [ProjectController::class, 'index'])->name('addProject');
+    Route::post('/admin/add-project', [ProjectController::class, 'create'])->name('createProject');
+    Route::get('/admin/list-project', [ProjectController::class, 'list'])->name('listProject');
+    Route::get('/admin/edit-project/{id}', [ProjectController::class, 'edit'])->name('editProject');
+    Route::put('/admin/edit-project/{id}', [ProjectController::class, 'update'])->name('updateProject');
+    Route::delete('/admin/delete-project/{project}', [ProjectController::class, 'delete'])->name('deleteProject');
 });

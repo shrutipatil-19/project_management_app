@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EmployeeController extends Controller
 {
@@ -52,5 +53,35 @@ class EmployeeController extends Controller
         $employee = Employee::findOrFail($id);
         $employee->delete();
         return redirect()->route('listEmployee')->with('success', 'Employee Edited successfully');
+    }
+    public function login()
+    {
+        return view('project_management.pages.employee.login');
+    }
+
+    public function loginUser(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string'
+        ]);
+        if (Auth::guard('employee')->attempt([
+            'email' => $request->email,
+            'password' =>  $request->password
+        ]))
+
+            $request->session()->regenerate();
+
+        return redirect()->route('listProject')->with('success', 'Employee Edited successfully');
+    }
+    public function logoutUser(Request $request)
+    {
+
+        Auth::guard('employee')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+        return redirect()->route('login')->with('success', 'Employee Edited successfully');
     }
 }
