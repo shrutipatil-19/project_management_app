@@ -27,7 +27,9 @@
                                 @foreach ($projects as $project)
                                 <tr>
                                     <td class="py-1">
-                                        <img src="../../assets/images/faces-clipart/pic-1.png" alt="image" />
+                                        @if ($project->img)
+                                        <img src="{{ url('storage/app/public/' . $project->img) }}" width="50" height="50" style="object-fit: cover; margin-right: 5px;" alt="Image">
+                                        @endif
                                     </td>
                                     <td> {{ $project->name }} </td>
                                     <td>
@@ -44,7 +46,7 @@
                                             @method('DELETE')
                                             <button type="button" class="btn btn-danger" onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this blog?')) this.closest('form').submit();">Delete</button>
                                         </form>
-                                        
+
 
                                     </td>
 
