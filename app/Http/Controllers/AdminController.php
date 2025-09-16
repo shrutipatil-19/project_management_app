@@ -28,12 +28,6 @@ class AdminController extends Controller
     {
         return view('project_management.pages.login.login');
     }
-    // public function loginUser(Request $request)
-    // {
-    //     $validated = $request->only('email', 'password');
-    //     auth::guard('admin');
-    // }
-
 
     public function loginUser(Request $request)
     {
